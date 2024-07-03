@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Text Editor</title>
+    
+    <style>
+        body {
+             width: 100%;
+             background: url(gifimgin.gif);
+             background-position: center;
+             background-size: cover;
+             height: 109vh;
+             font-family: Arial, sans-serif;
+        }
+        .editor {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .editor textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .editor textarea {
+            height: 300px;
+            resize: none;
+        }
+        .editor button {
+            padding: 10px 20px;
+            background-color:pink;
+            text-color: #0000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .editor button:hover {
+            background-color: #6a9acd;
+        }
+    </style>
+</head>
+<body>
+    <h1>TextEditor</h1>
+    <div class="editor">
+    <form action="/sendMsg" method="post">
+         <textarea id="editor-textarea" placeholder="Start typing here..." name="msg"></textarea>
+        <button>POST</button> 
+    </form>
+    </div>
+</body>
+</html>

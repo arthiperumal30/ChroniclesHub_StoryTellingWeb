@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>WebPage Design</title>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            function welcome1() {
+                window.open("index.html")
+            }
+            function welcome() {
+                window.open("index1.html")
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="navbar">
+                <div class="icon">
+                    <h2 class="logo">ChroniclesHub</h2>
+                </div>
+
+                <div class="menu">
+                    <ul>
+                        <li><a href="#" onclick="welcome1()">HOME</a></li>
+                        <li><a href="http:localhost:3000">CREATE</a></li>
+                        <li><a href="#" onclick="welcome()">DISCOVER</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type To Text">
+                    <a href="#"><button class="btn">SEARCH</button></a>
+                </div>
+                <div class="search-result"></div>
+
+            </div>
+            <div class="content" onclick="fetchQuote()">
+                <h1 id="quote-container">There is no <br><span>GREATER AGONY</span><br>than bearing an<br><span>UNTOLD STORY </span> <br>inside you</h1>
+                <blockquote id="author"></blockquote>
+                <button class="cn" id="joinUsButton">JOIN US</button>
+            </div>
+        </div>
+      <script>
+
+var User = {
+                displayWelcomeMessage: function() {
+                    alert('Loading.....Welcome to ChroniclesHub!');
+                }
+            };
+
+            // Call the displayWelcomeMessage method when the page loads
+            window.onload = function() {
+                User.displayWelcomeMessage();
+            };
+
+
+
+     var joinUsButton = document.getElementById('joinUsButton');
+    joinUsButton.addEventListener('click', function(event){
+        alert('THANK YOU FOR JOINING US', event.key);
+    });
+     
+
+     
+
+    
+         const SearchButton = {
+                searchInput: document.querySelector('.srch'),
+                searchButton: document.querySelector('.btn'),
+                resultDisplay: document.querySelector('.search-result'),
+
+    
+                onSearchButtonClick: function() {
+                    const searchText = this.searchInput.value;
+                    this.resultDisplay.innerHTML = `<p class="search-result-style">Your Search Query is: ${searchText}</p>`;
+                }
+            };
+
+            SearchButton.searchButton.addEventListener('click', function() {
+                SearchButton.onSearchButtonClick();
+            });
+
+
+            function fetchQuote() {
+            const apiUrl = 'https://api.quotable.io/random';
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const quoteElement = document.getElementById('quote-container');
+                    const authorElement = document.getElementById('author');
+
+                    // Set the text content of the HTML elements with the fetched data
+                    quoteElement.textContent = `"${data.content}"`;
+                    authorElement.textContent = `- ${data.author}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching quote:', error);
+                });
+        }
+  
+</script>
+    </body>
+</html>
